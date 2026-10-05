@@ -1,360 +1,45 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
-  <meta name="theme-color" content="#111111" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="禁欲打卡" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="apple-touch-icon" href="icon-180.png" />
-  <title>禁欲打卡</title>
-  <style>
-    :root{
-      --bg:#f5f5f7; --card:#fff; --text:#111; --muted:#777; --line:#e8e8ec;
-      --accent:#111; --good:#2f8f56; --warn:#b85b2a; --shadow:0 8px 28px rgba(0,0,0,.07);
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0d0d0f; --card:#18181b; --text:#f5f5f7; --muted:#9a9aa1; --line:#2a2a2f;
-        --accent:#f5f5f7; --good:#6ed092; --warn:#f39a67; --shadow:0 8px 28px rgba(0,0,0,.28);
-      }
-    }
-    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",Arial,sans-serif}
-    body{padding:calc(env(safe-area-inset-top) + 18px) 16px calc(env(safe-area-inset-bottom) + 24px)}
-    .app{max-width:620px;margin:0 auto}
-    .top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin:8px 4px 18px}
-    .title{font-size:27px;font-weight:760;letter-spacing:-.6px}
-    .subtitle{font-size:13px;color:var(--muted);margin-top:4px}
-    button{font:inherit}
-    .iconbtn{border:0;background:var(--card);color:var(--text);width:42px;height:42px;border-radius:14px;box-shadow:var(--shadow);font-size:20px}
-    .hero{background:var(--card);border-radius:28px;padding:26px 22px;box-shadow:var(--shadow);text-align:center}
-    .streak-label{font-size:13px;color:var(--muted)}
-    .streak{font-size:72px;line-height:1;font-weight:820;letter-spacing:-4px;margin:10px 0 2px}
-    .days{font-size:16px;color:var(--muted);margin-bottom:18px}
-    .today{font-size:14px;color:var(--muted);margin-bottom:18px}
-    .primary{width:100%;border:0;border-radius:17px;padding:15px 18px;background:var(--accent);color:var(--bg);font-weight:700;font-size:16px}
-    .primary.done{background:var(--good);color:white}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
-    .stat{background:var(--card);border-radius:19px;padding:16px 10px;text-align:center;box-shadow:var(--shadow)}
-    .stat b{display:block;font-size:22px}
-    .stat span{display:block;font-size:11px;color:var(--muted);margin-top:4px}
-    .card{background:var(--card);border-radius:23px;padding:18px;box-shadow:var(--shadow);margin-top:14px}
-    .card h2{font-size:16px;margin:0 0 14px}
-    .calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-    .monthbtn{border:0;background:transparent;color:var(--text);font-size:22px;padding:6px 10px}
-    .week,.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;text-align:center}
-    .week{font-size:11px;color:var(--muted);margin-bottom:8px}
-    .day{aspect-ratio:1;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:13px;background:var(--bg);position:relative}
-    .day.empty{background:transparent}
-    .day.checked{background:var(--good);color:white;font-weight:700}
-    .day.reset{outline:2px solid var(--warn)}
-    .day.today{box-shadow:inset 0 0 0 2px var(--text)}
-    .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .secondary,.danger{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:15px;padding:13px;font-weight:650}
-    .danger{color:var(--warn)}
-    .note{font-size:12px;color:var(--muted);line-height:1.55;margin-top:12px}
-    dialog{width:min(92vw,520px);border:0;border-radius:24px;background:var(--card);color:var(--text);padding:0;box-shadow:0 25px 80px rgba(0,0,0,.35)}
-    dialog::backdrop{background:rgba(0,0,0,.45);backdrop-filter:blur(4px)}
-    .modal{padding:22px}
-    .modal h3{margin:0 0 16px;font-size:20px}
-    label{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px}
-    input,textarea{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:13px;padding:12px;font:inherit}
-    textarea{min-height:88px;resize:vertical}
-    .modal-actions{display:flex;gap:10px;margin-top:16px}
-    .modal-actions button{flex:1}
-    .tiny{font-size:11px;color:var(--muted)}
-    .footer{text-align:center;color:var(--muted);font-size:11px;margin:18px 0 4px}
-    .pill{display:inline-flex;gap:6px;align-items:center;background:var(--bg);border-radius:999px;padding:7px 10px;font-size:12px;color:var(--muted)}
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12211d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="禁欲打卡">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png"><link rel="icon" href="icon-192.png"><link rel="stylesheet" href="style.css"><title>禁欲打卡</title>
+<script src="core.js" defer></script><script src="app.js" defer></script>
 </head>
 <body>
-<div class="app">
-  <div class="top">
-    <div>
-      <div class="title" id="appTitle">禁欲打卡</div>
-      <div class="subtitle">只记录，不评判。每天完成一次即可。</div>
-    </div>
-    <button class="iconbtn" id="settingsBtn" aria-label="设置">⋯</button>
-  </div>
-
-  <section class="hero">
-    <div class="streak-label">当前连续</div>
-    <div class="streak" id="streak">0</div>
-    <div class="days">天</div>
-    <div class="today" id="sinceText">从今天开始</div>
-    <button class="primary" id="checkBtn">完成今天打卡</button>
-  </section>
-
-  <div class="stats">
-    <div class="stat"><b id="best">0</b><span>最长连续</span></div>
-    <div class="stat"><b id="total">0</b><span>累计打卡</span></div>
-    <div class="stat"><b id="rate">0%</b><span>近 30 天完成率</span></div>
-  </div>
-
-  <section class="card">
-    <div class="calendar-head">
-      <button class="monthbtn" id="prevMonth" aria-label="上个月">‹</button>
-      <h2 id="monthTitle" style="margin:0"></h2>
-      <button class="monthbtn" id="nextMonth" aria-label="下个月">›</button>
-    </div>
-    <div class="week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
-    <div class="grid" id="calendar"></div>
-  </section>
-
-  <section class="card">
-    <h2>记录与备份</h2>
-    <div class="actions">
-      <button class="secondary" id="exportBtn">导出备份</button>
-      <button class="secondary" id="importBtn">导入备份</button>
-      <button class="secondary" id="editStartBtn">修改起始日</button>
-      <button class="danger" id="resetBtn">重置计时</button>
-    </div>
-    <div class="note">数据保存在这台设备的浏览器存储中，并做双重本地保存。建议偶尔“导出备份”到 iCloud Drive；这样即使换手机或清除 Safari 网站数据，也能恢复。</div>
-  </section>
-
-  <div class="footer">离线可用 · 无账号 · 无广告 · 数据不上传服务器</div>
+<div class="app" id="app" inert>
+<header><div><span class="eyebrow">DAILY CHECK-IN <span class="version">v2</span></span><h1 id="appTitle">禁欲打卡</h1></div><button class="icon-button" id="settingsBtn" aria-label="打开设置">⚙</button></header>
+<p id="storageStatus" class="storage" role="status">正在读取记录…</p>
+<div id="updateBanner" class="notice" hidden>新版本已准备好。<button id="refreshBtn" class="text-button">刷新页面</button></div>
+<main>
+<section id="checkinPanel" class="panel" aria-label="每日打卡">
+<div class="hero"><div class="hero-top"><span>当前连续成功</span><span id="todayLabel"></span></div><div class="streak"><b id="streak">0</b><span>天</span></div><p id="mottoText"></p><button class="primary" id="checkBtn">记录今天</button><p class="hero-note" id="todayStatus">今天还未记录</p></div>
+<div class="mini-stats"><div><span>最长连续</span><b id="best">0 天</b></div><div><span>累计成功</span><b id="total">0 天</b></div></div>
+<section class="card calendar-card"><div class="section-head"><h2>每一天，都能修改</h2><button class="text-button" id="jumpToday">本月</button></div><div class="calendar-head"><button class="icon-button" id="prevMonth" aria-label="上个月">‹</button><h3 id="monthTitle"></h3><button class="icon-button" id="nextMonth" aria-label="下个月">›</button></div><div class="week" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div id="calendar" class="calendar-grid"></div><div class="legend"><span><i class="dot success"></i>成功</span><span><i class="dot failure"></i>未成功</span><span><i class="dot unknown"></i>未记录</span></div><button class="secondary full" id="chooseDate">选择日期补记</button></section>
+<p class="muted footnote">连续天数按逐日记录计算；未记录的过去日期会中断连续。今天未记录时，连续计算至昨天。</p>
+</section>
+<section id="dashboardPanel" class="panel" aria-label="统计看板" hidden>
+<div class="section-head"><h2>统计看板</h2><span class="muted" id="rangeLabel"></span></div>
+<div class="range-control" role="group" aria-label="统计时间范围"><button data-range="7">近7天</button><button data-range="30" class="active" aria-pressed="true">近30天</button><button data-range="month">本月</button><button data-range="all">全部</button></div>
+<div class="dashboard-hero"><div><span>成功率</span><strong id="rate">—</strong></div><div class="ring" id="rateRing"><b id="coverage">0%</b><span>记录覆盖率</span></div><p id="rateDescription"></p></div>
+<div class="metric-grid"><div class="metric"><span>成功天数</span><b id="successDays">0</b></div><div class="metric"><span>未成功天数</span><b id="failureDays">0</b></div><div class="metric"><span>未记录天数</span><b id="unknownDays">0</b></div><div class="metric"><span>射精总次数</span><b id="eventTotal">0</b></div></div>
+<section class="card"><h2>射精方式</h2><div class="method-row"><span class="method-icon sex">💞</span><span>做爱</span><strong id="sexTotal">0 次</strong></div><div class="bar-track"><div id="sexBar" class="bar sex"></div></div><div class="method-row"><span class="method-icon solo">✋</span><span>自慰</span><strong id="soloTotal">0 次</strong></div><div class="bar-track"><div id="soloBar" class="bar solo"></div></div><p class="muted footnote">按射精次数统计，同一天可以记录两种方式。</p></section>
+<section class="card"><h2>近六个月 · 成功率</h2><div id="trend" class="trend"></div><p class="muted footnote">每月成功天数 ÷ 当月已到来的追踪天数；未记录日期计入分母。</p></section>
+<section class="card"><h2>这段时间的记录</h2><div id="history" class="history"></div></section>
+</section>
+<section id="backupPanel" class="panel" aria-label="记录备份" hidden>
+<h2>记录与备份</h2><section class="card"><div class="section-head"><h3>随时带走你的记录</h3><span class="badge">仅本机</span></div><p class="muted">关闭 App、重启手机后记录仍会保留。换手机或清除网站数据前，请把备份保存到 iCloud Drive。</p><div class="actions"><button class="primary" id="exportBtn">导出备份</button><button class="secondary" id="importBtn">导入备份</button></div><p id="backupInfo" class="muted footnote"></p><p class="muted footnote">兼容旧版备份。导入前自动保留当前记录，方便撤销。</p><button class="text-button" id="undoImport" hidden>撤销上一次导入</button></section>
+<section class="card"><h3>追踪起始日</h3><p id="startInfo" class="muted"></p><button class="secondary full" id="editStartBtn">修改起始日</button><p class="muted footnote">修改起始日不自动补记成功。补记更早日期时，起始日会相应提前。</p></section>
+<section class="card"><h3>旧版重置历史</h3><div id="legacyHistory"></div></section>
+<p class="muted footnote">无账号 · 无广告 · 打卡记录不上传服务器<br>两份本地存储都属于同一台设备，不能替代外部备份。</p>
+</section>
+</main>
+<nav class="bottom-nav" aria-label="主导航"><button data-tab="checkin" class="active" aria-current="page"><span>✓</span>打卡</button><button data-tab="dashboard"><span>▥</span>看板</button><button data-tab="backup"><span>▣</span>备份</button></nav>
 </div>
-
-<dialog id="settingsDialog">
-  <div class="modal">
-    <h3>设置</h3>
-    <label>工具名称</label>
-    <input id="goalName" maxlength="20" value="禁欲打卡">
-    <label>一句提醒</label>
-    <input id="motto" maxlength="60" placeholder="例如：今天只完成今天。">
-    <div class="modal-actions">
-      <button class="secondary" id="closeSettings">取消</button>
-      <button class="primary" id="saveSettings">保存</button>
-    </div>
-  </div>
-</dialog>
-
-<dialog id="resetDialog">
-  <div class="modal">
-    <h3>重置计时</h3>
-    <div class="tiny">这不会删除历史记录，只会结束当前连续并从今天重新开始。</div>
-    <label>备注（可选）</label>
-    <textarea id="resetNote" placeholder="写一点原因、触发因素或想提醒自己的话"></textarea>
-    <div class="modal-actions">
-      <button class="secondary" id="cancelReset">取消</button>
-      <button class="danger" id="confirmReset">确认重置</button>
-    </div>
-  </div>
-</dialog>
-
-<input type="file" id="fileInput" accept="application/json" hidden>
-
-<script>
-const KEY = 'abstinence_checkin_state_v1';
-const DB_NAME = 'AbstinenceCheckinDB';
-const STORE = 'state';
-let state = {
-  version: 1,
-  goalName: '禁欲打卡',
-  motto: '今天只完成今天。',
-  startDate: localDate(new Date()),
-  checkins: {},
-  resets: [],
-  modifiedAt: Date.now()
-};
-let viewDate = new Date();
-
-function localDate(d){
-  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
-  return `${y}-${m}-${day}`;
-}
-function parseDate(s){ const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); }
-function daysBetween(a,b){
-  const A=new Date(a.getFullYear(),a.getMonth(),a.getDate()), B=new Date(b.getFullYear(),b.getMonth(),b.getDate());
-  return Math.floor((B-A)/86400000);
-}
-function openDB(){
-  return new Promise((resolve,reject)=>{
-    const req=indexedDB.open(DB_NAME,1);
-    req.onupgradeneeded=e=>{ const db=e.target.result; if(!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE); };
-    req.onsuccess=()=>resolve(req.result);
-    req.onerror=()=>reject(req.error);
-  });
-}
-async function idbGet(){
-  try{
-    const db=await openDB();
-    return await new Promise((resolve,reject)=>{
-      const tx=db.transaction(STORE,'readonly');
-      const req=tx.objectStore(STORE).get(KEY);
-      req.onsuccess=()=>resolve(req.result || null);
-      req.onerror=()=>reject(req.error);
-    });
-  }catch(e){ return null; }
-}
-async function idbSet(v){
-  try{
-    const db=await openDB();
-    await new Promise((resolve,reject)=>{
-      const tx=db.transaction(STORE,'readwrite');
-      tx.objectStore(STORE).put(v,KEY);
-      tx.oncomplete=resolve; tx.onerror=()=>reject(tx.error);
-    });
-  }catch(e){}
-}
-async function loadState(){
-  let a=null,b=null;
-  try{ a=JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){}
-  b=await idbGet();
-  const candidates=[a,b].filter(Boolean);
-  if(candidates.length){
-    candidates.sort((x,y)=>(y.modifiedAt||0)-(x.modifiedAt||0));
-    state={...state,...candidates[0]};
-  }
-  await saveState(false);
-  render();
-}
-async function saveState(updateTime=true){
-  if(updateTime) state.modifiedAt=Date.now();
-  try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){}
-  await idbSet(state);
-}
-function currentCycleStart(){
-  if(!state.resets.length) return state.startDate;
-  const latest=[...state.resets].sort((a,b)=>b.date.localeCompare(a.date))[0];
-  return latest.date;
-}
-function currentStreak(){
-  const today=localDate(new Date());
-  const start=parseDate(currentCycleStart());
-  const t=parseDate(today);
-  if(start>t) return 0;
-  // Streak is elapsed calendar days including start day.
-  return daysBetween(start,t)+1;
-}
-function longestStreak(){
-  const starts=[state.startDate, ...state.resets.map(r=>r.date)].sort();
-  let best=0;
-  for(let i=0;i<starts.length;i++){
-    const start=parseDate(starts[i]);
-    const end=i<starts.length-1 ? parseDate(starts[i+1]) : parseDate(localDate(new Date()));
-    const len=Math.max(1,daysBetween(start,end)+(i<starts.length-1?0:1));
-    best=Math.max(best,len);
-  }
-  return best;
-}
-function rate30(){
-  const today=new Date();
-  let n=0;
-  for(let i=0;i<30;i++){
-    const d=new Date(today.getFullYear(),today.getMonth(),today.getDate()-i);
-    if(state.checkins[localDate(d)]) n++;
-  }
-  return Math.round(n/30*100);
-}
-function render(){
-  document.getElementById('appTitle').textContent=state.goalName||'禁欲打卡';
-  document.title=state.goalName||'禁欲打卡';
-  document.getElementById('streak').textContent=currentStreak();
-  document.getElementById('best').textContent=longestStreak();
-  document.getElementById('total').textContent=Object.keys(state.checkins).length;
-  document.getElementById('rate').textContent=rate30()+'%';
-
-  const cycle=currentCycleStart();
-  const motto=(state.motto||'').trim();
-  document.getElementById('sinceText').textContent = motto ? `${motto} · 起始 ${cycle}` : `起始 ${cycle}`;
-
-  const today=localDate(new Date());
-  const btn=document.getElementById('checkBtn');
-  if(state.checkins[today]){
-    btn.textContent='今天已完成 ✓'; btn.classList.add('done');
-  }else{
-    btn.textContent='完成今天打卡'; btn.classList.remove('done');
-  }
-  renderCalendar();
-}
-function renderCalendar(){
-  const y=viewDate.getFullYear(), m=viewDate.getMonth();
-  document.getElementById('monthTitle').textContent=`${y} 年 ${m+1} 月`;
-  const grid=document.getElementById('calendar'); grid.innerHTML='';
-  const first=new Date(y,m,1), days=new Date(y,m+1,0).getDate();
-  const mondayIndex=(first.getDay()+6)%7;
-  for(let i=0;i<mondayIndex;i++){ const e=document.createElement('div'); e.className='day empty'; grid.appendChild(e); }
-  const today=localDate(new Date());
-  const resetSet=new Set(state.resets.map(r=>r.date));
-  for(let d=1;d<=days;d++){
-    const date=localDate(new Date(y,m,d));
-    const el=document.createElement('div'); el.className='day'; el.textContent=d;
-    if(state.checkins[date]) el.classList.add('checked');
-    if(resetSet.has(date)) el.classList.add('reset');
-    if(date===today) el.classList.add('today');
-    el.title=date;
-    grid.appendChild(el);
-  }
-}
-document.getElementById('checkBtn').addEventListener('click', async ()=>{
-  const t=localDate(new Date());
-  if(state.checkins[t]) delete state.checkins[t];
-  else state.checkins[t]={time:new Date().toISOString()};
-  await saveState(); render();
-});
-document.getElementById('prevMonth').onclick=()=>{viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()-1,1);renderCalendar()};
-document.getElementById('nextMonth').onclick=()=>{viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()+1,1);renderCalendar()};
-
-const settingsDialog=document.getElementById('settingsDialog');
-document.getElementById('settingsBtn').onclick=()=>{
-  document.getElementById('goalName').value=state.goalName||'禁欲打卡';
-  document.getElementById('motto').value=state.motto||'';
-  settingsDialog.showModal();
-};
-document.getElementById('closeSettings').onclick=()=>settingsDialog.close();
-document.getElementById('saveSettings').onclick=async()=>{
-  state.goalName=document.getElementById('goalName').value.trim()||'禁欲打卡';
-  state.motto=document.getElementById('motto').value.trim();
-  await saveState(); settingsDialog.close(); render();
-};
-
-const resetDialog=document.getElementById('resetDialog');
-document.getElementById('resetBtn').onclick=()=>{document.getElementById('resetNote').value='';resetDialog.showModal()};
-document.getElementById('cancelReset').onclick=()=>resetDialog.close();
-document.getElementById('confirmReset').onclick=async()=>{
-  const date=localDate(new Date());
-  state.resets.push({date, time:new Date().toISOString(), note:document.getElementById('resetNote').value.trim()});
-  await saveState(); resetDialog.close(); render();
-};
-
-document.getElementById('editStartBtn').onclick=async()=>{
-  const s=prompt('输入起始日期（YYYY-MM-DD）',state.startDate);
-  if(!s) return;
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(s) || isNaN(parseDate(s).getTime())) return alert('日期格式不正确');
-  state.startDate=s;
-  await saveState(); render();
-};
-
-document.getElementById('exportBtn').onclick=()=>{
-  const payload={app:'禁欲打卡', exportedAt:new Date().toISOString(), state};
-  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-  const url=URL.createObjectURL(blob), a=document.createElement('a');
-  a.href=url; a.download=`禁欲打卡备份_${localDate(new Date())}.json`;
-  a.click(); setTimeout(()=>URL.revokeObjectURL(url),1500);
-};
-document.getElementById('importBtn').onclick=()=>document.getElementById('fileInput').click();
-document.getElementById('fileInput').onchange=async(e)=>{
-  const f=e.target.files[0]; if(!f) return;
-  try{
-    const obj=JSON.parse(await f.text());
-    const imported=obj.state || obj;
-    if(!imported || typeof imported!=='object') throw new Error();
-    if(!confirm('导入会覆盖当前记录。继续吗？')) return;
-    state={...state,...imported,modifiedAt:Date.now()};
-    await saveState(false); render(); alert('已恢复备份');
-  }catch(err){ alert('备份文件无法读取'); }
-  e.target.value='';
-};
-
-window.addEventListener('beforeinstallprompt', e=>e.preventDefault());
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-}
-loadState();
-</script>
-</body>
-</html>
+<dialog id="recordDialog"><form id="recordForm"><div class="modal-head"><h2>编辑每日记录</h2><button class="icon-button" type="button" data-close="recordDialog" aria-label="关闭">×</button></div><label for="recordDate">日期</label><input id="recordDate" type="date" required min="1900-01-01"><fieldset><legend>当天是否成功？</legend><div class="status-options"><label><input type="radio" name="status" value="success"><span>✓ 成功</span></label><label><input type="radio" name="status" value="failure"><span>未成功</span></label><label><input type="radio" name="status" value="unknown"><span>未记录</span></label></div></fieldset>
+<div id="methodFields" hidden><p class="muted footnote">射精方式与次数（可分别填写）</p><div class="count-fields"><div><label for="sexCount"><span>💞</span> 做爱</label><input id="sexCount" type="number" min="0" max="99" step="1" inputmode="numeric" value="0"></div><div><label for="soloCount"><span>✋</span> 自慰</label><input id="soloCount" type="number" min="0" max="99" step="1" inputmode="numeric" value="0"></div></div><p class="muted footnote">若只是未达成当天目标，可保留 0 次。</p></div>
+<label for="recordNote">备注（选填）</label><textarea id="recordNote" maxlength="500" rows="3" placeholder="今天的感受或想记下的事"></textarea><p id="recordHint" class="muted footnote"></p><div class="actions modal-actions"><button type="button" class="secondary" data-close="recordDialog">取消</button><button type="submit" class="primary">保存记录</button></div></form></dialog>
+<dialog id="settingsDialog"><form id="settingsForm"><div class="modal-head"><h2>设置</h2><button type="button" class="icon-button" data-close="settingsDialog" aria-label="关闭">×</button></div><label for="goalName">工具名称</label><input id="goalName" maxlength="20"><label for="motto">一句提醒</label><input id="motto" maxlength="60"><div class="actions modal-actions"><button type="button" class="secondary" data-close="settingsDialog">取消</button><button type="submit" class="primary">保存</button></div></form></dialog>
+<dialog id="startDialog"><form id="startForm"><h2>修改起始日</h2><label for="startDate">日期</label><input id="startDate" type="date" min="1900-01-01" required><p class="muted">起始日不能晚于已有记录的最早日期。</p><div class="actions modal-actions"><button type="button" class="secondary" data-close="startDialog">取消</button><button type="submit" class="primary">保存</button></div></form></dialog>
+<input type="file" id="fileInput" accept=".json,application/json" hidden><div id="toast" role="status" hidden></div>
+</body></html>
